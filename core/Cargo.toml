@@ -1,0 +1,16 @@
+[package]
+name = "feather-core"
+version = "1.1.0"
+edition = "2021"
+description = "Feather's tiny message hub and network client, shared by the desktop app and the server"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+webpki-roots = "0.26"
+
+[[bin]]
+name = "feather-hub"
+path = "src/bin/feather-hub.rs"

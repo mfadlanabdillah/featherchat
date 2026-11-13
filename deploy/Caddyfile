@@ -1,0 +1,15 @@
+# Caddy gets and renews the HTTPS certificate by itself. Set FEATHER_DOMAIN
+# in the .env file next to docker-compose.yml, or replace the placeholder.
+{$FEATHER_DOMAIN:localhost} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+	}
+
+	# In Docker this is the hub service; on a normal install it is
+	# 127.0.0.1:8777.
+	reverse_proxy {$FEATHER_UPSTREAM:127.0.0.1:8777}
+}

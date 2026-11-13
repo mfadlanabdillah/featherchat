@@ -1,0 +1,41 @@
+# Feather on a server: the hub plus automatic HTTPS.
+#
+#   echo "FEATHER_DOMAIN=chat.example.com" > .env
+#   docker compose up -d --build
+#
+# The hub itself is never exposed to the internet; only Caddy's 80/443 are.
+name: feather
+
+services:
+  hub:
+    build: .
+    image: feather-hub:1.1.0
+    restart: unless-stopped
+    environment:
+      FEATHER_DATA: /data/hub.json
+      FEATHER_SIGNUP: ${FEATHER_SIGNUP:-open}
+    volumes:
+      - feather_data:/data
+    expose:
+      - "8777"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - hub
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      FEATHER_DOMAIN: ${FEATHER_DOMAIN:-localhost}
+      FEATHER_UPSTREAM: hub:8777
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  feather_data:
+  caddy_data:
+  caddy_config:

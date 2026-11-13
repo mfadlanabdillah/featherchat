@@ -1,0 +1,17 @@
+# Build output
+/target/
+*.pdb
+*.dSYM/
+
+# Local screenshots, test data and hub stores
+/shots/
+
+# Machine-specific cargo settings (an absolute linker path would break other machines)
+/.cargo/
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

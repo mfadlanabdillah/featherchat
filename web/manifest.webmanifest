@@ -1,0 +1,19 @@
+{
+  "name": "Feather · lightweight messaging",
+  "short_name": "Feather",
+  "description": "A small, fast chat app for your own circle.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#efe9e0",
+  "theme_color": "#18a06e",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

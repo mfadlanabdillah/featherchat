@@ -1,0 +1,30 @@
+[Unit]
+Description=Feather chat hub
+Documentation=file:///opt/feather/DEPLOY.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=feather
+Group=feather
+Environment=FEATHER_BIND=127.0.0.1
+Environment=FEATHER_PORT=8777
+Environment=FEATHER_DATA=/var/lib/feather/hub.json
+# Change to "closed" once everyone has made an account.
+Environment=FEATHER_SIGNUP=open
+ExecStart=/usr/local/bin/feather-hub
+Restart=always
+RestartSec=2
+# The one folder the hub may write to.
+ReadWritePaths=/var/lib/feather
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

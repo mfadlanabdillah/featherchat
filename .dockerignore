@@ -1,0 +1,7 @@
+target
+shots
+checks
+*.png
+*.md
+!DEPLOY.md
+.git
