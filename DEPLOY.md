@@ -6,10 +6,10 @@ message queue and no cloud account.
 
 ## Fast path
 
-Copy this `app` folder to the server (from the folder above it):
+Clone the project on the server (or copy this `app` folder there):
 
 ```bash
-scp -r app root@YOUR_SERVER_IP:/opt/feather
+git clone https://github.com/mfadlanabdillah/featherchat /opt/feather
 ```
 
 On a Debian or Ubuntu server, one command does everything below: build the
@@ -73,9 +73,15 @@ sudo usermod -aG docker "$USER"
 
 Log out and back in so the group change applies.
 
-### 3. Copy the app folder to the server
+### 3. Put the app folder on the server
 
-From your own computer, in the folder that contains `app`:
+Clone the project on the server:
+
+```bash
+git clone https://github.com/mfadlanabdillah/featherchat /opt/feather
+```
+
+Or copy it from your own computer, in the folder that contains `app`:
 
 ```powershell
 scp -r app root@YOUR_SERVER_IP:/opt/feather

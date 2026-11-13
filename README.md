@@ -41,10 +41,10 @@ The data file lives at `%APPDATA%\Feather\hub.json` on Windows (or
 
 ## Put it on a VPS
 
-Copy this `app` folder to the server first (from the folder above it):
+Clone the project on the server (or copy this `app` folder there):
 
 ```bash
-scp -r app root@YOUR_SERVER_IP:/opt/feather
+git clone https://github.com/mfadlanabdillah/featherchat /opt/feather
 ```
 
 Then one command on a Debian/Ubuntu server builds the half-megabyte hub, runs
