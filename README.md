@@ -9,6 +9,8 @@ tracking, no cloud account.
 ## Run the desktop app
 
 ```
+git clone https://github.com/mfadlanabdillah/featherchat
+cd featherchat
 cargo run --release
 ```
 
